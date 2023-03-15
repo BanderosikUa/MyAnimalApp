@@ -1,4 +1,9 @@
 package com.example.myanimalapp.model
 
-class AnimalModel {
-}
+import org.w3c.dom.Text
+
+class AnimalModel (
+        val name: String,
+        val description: String,
+        val photo: String = "cat",
+)
