@@ -1,10 +1,13 @@
 package com.example.myanimalapp.adapter
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.myanimalapp.R
 import com.example.myanimalapp.SecondActivity
 import com.example.myanimalapp.databinding.ItemAnimalLayoutBinding
@@ -33,13 +36,15 @@ class AnimalAdapter:RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>() {
         with(holder.binding){
             tvName.text = animal.name
             tvDescription.text = animal.description
-            val photoId = context.resources.getIdentifier("${animal.photo}", "drawable", context.packageName)
-            photo.setImageResource(photoId)
+            Log.d("link", animal.photo)
+            Glide.with(context)
+                .load(animal.photo)
+                .into(photo)
             button.setOnClickListener{
                 val intent = Intent(context, SecondActivity::class.java)
                 intent.putExtra("name", animal.name)
                 intent.putExtra("description", animal.description)
-                intent.putExtra("photoId", photoId)
+                intent.putExtra("photoLink", animal.photo)
                 context.startActivity(intent)
             }
         }
