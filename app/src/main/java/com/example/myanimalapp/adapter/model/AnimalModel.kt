@@ -1,4 +1,4 @@
-package com.example.myanimalapp.model
+package com.example.myanimalapp.adapter.model
 
 import org.w3c.dom.Text
 
